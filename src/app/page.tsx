@@ -31,8 +31,7 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-none flex items-center justify-center font-black text-white italic">NF</div>
-            <span className="text-xl font-black uppercase tracking-tighter">Novo<span className="text-primary italic">Flow</span></span>
+            <Image src="/NOVOFLOWVERDE.png" alt="Novo Flow" width={180} height={45} className="object-contain" />
           </div>
           <a 
             href="https://form.respondi.app/lDg0Bifo" 
@@ -183,8 +182,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
           <div className="space-y-4">
             <div className="flex items-center justify-center md:justify-start gap-2">
-              <div className="w-6 h-6 bg-primary font-black text-white italic text-[10px] flex items-center justify-center">NF</div>
-              <span className="text-lg font-black uppercase tracking-tighter">Novo<span className="text-primary italic">Flow</span></span>
+              <Image src="/NOVOFLOWVERDE.png" alt="Novo Flow" width={150} height={38} className="object-contain" />
             </div>
             <p className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-medium leading-loose">
               Copyright © 2024 Novo Flow Performance. <br />

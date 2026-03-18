@@ -3,7 +3,7 @@ import { ArrowLeft, ChevronRight } from 'lucide-react';
 
 export default function ManifestoPage() {
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-pink-500 selection:text-white font-sans overflow-x-hidden">
+    <main className="min-h-screen bg-black text-white selection:bg-primary selection:text-primary-foreground font-sans overflow-x-hidden">
       {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6 h-20 flex items-center">
@@ -20,12 +20,12 @@ export default function ManifestoPage() {
       {/* Hero Section */}
       <section className="pt-40 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-500 text-xs font-bold tracking-widest uppercase">
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase">
             Nosso Manifesto
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
             O Fim da Era das <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
               Agências de Vaidade.
             </span>
           </h1>
@@ -102,7 +102,7 @@ export default function ManifestoPage() {
               href="https://form.respondi.app/lDg0Bifo"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-5 bg-pink-600 hover:bg-pink-500 text-white rounded-none font-bold tracking-wide transition-all transform hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(236,72,153,0.5)] group"
+              className="inline-flex items-center gap-3 px-8 py-5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-none font-black tracking-widest transition-all transform hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(37,231,122,0.5)] group"
             >
               INICIAR DIAGNÓSTICO ESTRATÉGICO
               <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
