@@ -79,7 +79,7 @@ export default function ManifestoPage() {
                 Nosso trabalho não termina quando o lead cai no CRM. Ele termina no faturamento. Nós assumimos a responsabilidade pela qualidade do ecossistema que construímos.
               </p>
               <p>
-                É por isso que estruturamos ciclos estratégicos de 4 meses. O tempo necessário para auditar, construir, validar e escalar máquinas de vendas complexas. Não acreditamos em milagres de 30 dias; acreditamos em trabalho árduo, dados e otimização contínua.
+                É por isso que estruturamos a nossa operação de forma clara, pragmática e focada em resultados reais: <strong>1 mês dedicado a arrumar a casa</strong> com implantação completa de Inteligência Local e Google Meu Negócio, seguido por <strong>3 meses de tração agressiva e tráfego focado em ROI absoluto</strong>. Não acreditamos em milagres; acreditamos em engenharia de vendas e otimização contínua.
               </p>
             </div>
           </div>
