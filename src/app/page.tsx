@@ -37,7 +37,7 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image src="/NOVOFLOWVERDE.png" alt="Novo Flow" width={180} height={45} className="object-contain" />
+            <Image src="/NOVOFLOWBRANCO.png" alt="Novo Flow" width={180} height={45} className="object-contain" />
           </div>
           
           <div className="hidden md:flex items-center gap-6">
@@ -208,7 +208,7 @@ export default function Home() {
 
           {/* Coluna Esquerda: Logo e Copyright */}
           <div className="space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
-            <Image src="/NOVOFLOWVERDE.png" alt="Novo Flow" width={150} height={38} className="object-contain" />
+            <Image src="/NOVOFLOWBRANCO.png" alt="Novo Flow" width={150} height={38} className="object-contain" />
             <p className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-medium leading-loose">
               Copyright © 2026 Novo Flow Performance.<br />
               Todos os direitos reservados.

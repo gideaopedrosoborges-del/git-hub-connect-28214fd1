@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, ChevronRight, ShieldCheck, Globe, Zap, Target } from 'lucide-react';
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 
 export default function ManifestoPage() {
@@ -52,7 +53,7 @@ export default function ManifestoPage() {
 
       {/* Header */}
       <header className="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div className="container mx-auto px-6 h-20 flex items-center">
+        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <Link 
             href="/" 
             className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors group"
@@ -60,11 +61,15 @@ export default function ManifestoPage() {
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             Voltar para a Máquina
           </Link>
+          
+          <div className="flex items-center">
+            <Image src="/NOVOFLOWBRANCO.png" alt="Novo Flow" width={150} height={38} className="object-contain" />
+          </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20 px-6">
+      <section className="pt-40 pb-10 px-6">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
           <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-[#2bffa0]/30 bg-[#2bffa0]/10 text-[#2bffa0] text-xs font-bold tracking-widest uppercase">
             Nosso Manifesto
@@ -78,6 +83,52 @@ export default function ManifestoPage() {
           <p className="text-xl md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed">
             Nós não vendemos tráfego. Construímos ativos de previsibilidade e lucro para o seu negócio.
           </p>
+        </div>
+      </section>
+
+      {/* Methodology Section - Implantacao que Gera Tracao (MOVIDO PARA CÁ) */}
+      <section className="py-20 px-6 relative z-10 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <div className="max-w-3xl mx-auto space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-black uppercase leading-none tracking-tighter bg-gradient-to-r from-white via-green-200 to-[#2bffa0] bg-clip-text text-transparent pb-2">
+            A Implantação que <span className="text-[#2bffa0]">Gera Tração.</span>
+          </h2>
+
+          <div className="grid grid-cols-1 gap-4 text-left pt-8">
+            <div className="flex gap-4 p-6 bg-zinc-900/30 backdrop-blur-sm border-l-2 border-[#2bffa0] hover:border-l-4 transition-all group">
+              <ShieldCheck className="text-[#2bffa0] shrink-0 w-6 h-6" />
+              <div>
+                <h4 className="font-black uppercase text-sm tracking-widest text-white">Semana 1: Estrutura de Autoridade</h4>
+                <p className="text-sm text-zinc-500 mt-1 font-light">Inteligência Local & Configuração de Base.</p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-6 bg-zinc-900/30 backdrop-blur-sm border-l-2 border-[#2bffa0] hover:border-l-4 transition-all group">
+              <Globe className="text-[#2bffa0] shrink-0 w-6 h-6" />
+              <div>
+                <h4 className="font-black uppercase text-sm tracking-widest text-white">Semana 2: Reputação e Presença</h4>
+                <p className="text-sm text-zinc-500 mt-1 font-light">Prova Social & Otimização da Casa Digital.</p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-6 bg-zinc-900/30 backdrop-blur-sm border-l-2 border-[#2bffa0] hover:border-l-4 transition-all group">
+              <Zap className="text-[#2bffa0] shrink-0 w-6 h-6" />
+              <div>
+                <h4 className="font-black uppercase text-sm tracking-widest text-white">Semana 3: Engajamento e Tração</h4>
+                <p className="text-sm text-zinc-500 mt-1 font-light">Manutenção Ativa & Construção de Desejo.</p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-6 bg-zinc-900/30 backdrop-blur-sm border-l-2 border-[#2bffa0] hover:border-l-4 transition-all group">
+              <Target className="text-[#2bffa0] shrink-0 w-6 h-6" />
+              <div>
+                <h4 className="font-black uppercase text-sm tracking-widest text-white">Semana 4: Performance Final</h4>
+                <p className="text-sm text-zinc-500 mt-1 font-light">Máxima Conversão & Análise de Resultados.</p>
+              </div>
+            </div>
+            
+            <div className="mt-8 p-6 bg-[#2bffa0]/5 border border-[#2bffa0]/20 rounded-none">
+              <p className="text-sm text-[#2bffa0] font-black uppercase tracking-[0.2em] text-center">
+                Após 30 dias: 3 meses de Manutenção + Tráfego com foco em ROI.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
