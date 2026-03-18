@@ -1,65 +1,219 @@
-import Image from "next/image";
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { ArrowRight, Zap, Target, BarChart3, ShieldCheck, Globe, Cpu } from "lucide-react"
 
 export default function Home() {
+  const partners = [
+    {
+      name: "Phill",
+      role: "Strategy & AI Architecture",
+      image: "/eu.png",
+      description: "Especialista em arquitetura de sistemas de IA e estratégia de negócios escaláveis."
+    },
+    {
+      name: "Gideão",
+      role: "Growth & Performance",
+      image: "/gide.png",
+      description: "Mestre em tráfego pago e escala acelerada com foco em ROI real."
+    },
+    {
+      name: "Gui",
+      role: "Creative & Brand Authority",
+      image: "/GUI.png",
+      description: "Diretor criativo focado em branding de alto valor e conversão visual."
+    }
+  ]
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white font-sans overflow-x-hidden">
+      {/* Header / Nav */}
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary rounded-none flex items-center justify-center font-black text-white italic">NF</div>
+            <span className="text-xl font-black uppercase tracking-tighter">Novo<span className="text-primary italic">Flow</span></span>
+          </div>
+          <a 
+            href="https://form.respondi.app/lDg0Bifo" 
+            target="_blank" 
+            className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors"
+          >
+            Aplicar para Consultoria <ArrowRight size={14} />
+          </a>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-40 pb-20 px-6">
+        <div className="absolute top-40 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-primary/20 blur-[120px] rounded-full -z-10 animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto text-center space-y-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-accent/30 bg-accent/5 text-accent text-[10px] font-black uppercase tracking-[0.2em] animate-fade-in-down">
+            <Cpu size={12} />
+            The AI-Driven Performance Engine
+          </div>
+          
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-black uppercase leading-[0.9] tracking-tighter animate-fade-in">
+            Instalar uma Máquina de <br />
+            <span className="text-primary italic">Performance.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-medium animate-fade-in animate-delay-200">
+            Escalamos operações High-Ticket com inteligência de dados e processos de elite. 
+            <span className="text-foreground block mt-2">ROI garantido em 4 meses de implementação.</span>
           </p>
+
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-8 animate-fade-in-up animate-delay-400">
+            <Button asChild className="h-16 px-10 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-lg rounded-none group transition-all duration-300 hover:scale-105">
+              <a href="https://form.respondi.app/lDg0Bifo" target="_blank">
+                Ativar Minha Máquina
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Button>
+            <div className="flex items-center gap-4 text-left">
+              <div className="flex -space-x-2">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-background bg-zinc-800 flex items-center justify-center text-[10px] font-bold">U{i}</div>
+                ))}
+              </div>
+              <div>
+                <p className="text-sm font-black uppercase tracking-tighter text-accent">+R$ 20 Milhões</p>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Faturados para Clientes</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Partners / Specialists */}
+      <section className="py-32 px-6 bg-zinc-950/50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center md:text-left space-y-4">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+              Arquitetos de <span className="text-accent underline decoration-4 underline-offset-8">Elite.</span>
+            </h2>
+            <p className="text-muted-foreground uppercase tracking-widest text-sm font-bold">Estrategistas vindos de grandes operações de escala.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {partners.map((partner, index) => (
+              <Card key={index} className="bg-black border-white/5 rounded-none overflow-hidden group hover:border-primary/50 transition-colors duration-500">
+                <CardContent className="p-0 relative aspect-[4/5]">
+                  <Image 
+                    src={partner.image} 
+                    alt={partner.name} 
+                    fill 
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="absolute bottom-0 p-8 w-full space-y-2 transform group-hover:-translate-y-2 transition-transform duration-500">
+                    <p className="text-primary font-black uppercase tracking-[0.2em] text-[10px]">{partner.role}</p>
+                    <h3 className="text-3xl font-black uppercase tracking-tighter">{partner.name}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      {partner.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
-  );
+      </section>
+
+      {/* Methodology Section */}
+      <section className="py-32 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="space-y-8">
+          <h2 className="text-4xl md:text-6xl font-black uppercase leading-none tracking-tighter">
+            O Método que <span className="text-primary">Mata</span> a Agência Tradicional.
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Enquanto outros focam em "branding contemplativo", nós instalamos infraestrutura de venda. 
+            Não é sobre ser visto, é sobre ser inescapável para o seu público ideal.
+          </p>
+          
+          <div className="space-y-6">
+            <div className="flex gap-4 p-6 bg-zinc-900 border-l-4 border-accent">
+              <Target className="text-accent shrink-0" />
+              <div>
+                <h4 className="font-black uppercase text-sm tracking-widest">Tráfego de Precisão</h4>
+                <p className="text-xs text-muted-foreground mt-1">Algoritmos customizados para produtos High-Ticket.</p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-6 bg-zinc-900 border-l-4 border-primary">
+              <Cpu className="text-primary shrink-0" />
+              <div>
+                <h4 className="font-black uppercase text-sm tracking-widest">IA de Qualificação</h4>
+                <p className="text-xs text-muted-foreground mt-1">SDRs Automáticos que entregam o lead pronto para o fechamento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative aspect-square bg-zinc-900 border border-white/10 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+          <div className="relative z-10 text-center space-y-4">
+             <div className="text-8xl font-black text-primary/20 italic select-none">DATA</div>
+             <BarChart3 size={80} className="mx-auto text-accent animate-bounce" />
+             <div className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Optimized in Real-Time</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-40 px-6 bg-primary relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
+          <h2 className="text-5xl md:text-8xl font-black uppercase text-white tracking-tighter leading-none">
+            Pare de jogar <br /> <span className="text-black italic">DINHEIRO</span> fora.
+          </h2>
+          <p className="text-black text-lg md:text-xl font-bold uppercase tracking-widest max-w-2xl mx-auto">
+            Se você fatura mais de R$ 50k/mês, o Novo Flow é o seu próximo degrau.
+          </p>
+          <Button asChild className="h-24 px-16 bg-black hover:bg-zinc-900 text-white font-black uppercase tracking-widest text-2xl rounded-none shadow-[20px_20px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none transition-all duration-300">
+            <a href="https://form.respondi.app/lDg0Bifo" target="_blank">
+              Quero Minha Auditoria Grátis
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-20 px-6 bg-black border-t border-white/5">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
+          <div className="space-y-4">
+            <div className="flex items-center justify-center md:justify-start gap-2">
+              <div className="w-6 h-6 bg-primary font-black text-white italic text-[10px] flex items-center justify-center">NF</div>
+              <span className="text-lg font-black uppercase tracking-tighter">Novo<span className="text-primary italic">Flow</span></span>
+            </div>
+            <p className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-medium leading-loose">
+              Copyright © 2024 Novo Flow Performance. <br />
+              Todos os direitos reservados.
+            </p>
+          </div>
+          
+          <div className="flex flex-col gap-2">
+             <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Estratégia & Contato</span>
+             <a href="https://wa.me/5541984370981" target="_blank" className="text-xl font-black hover:text-accent transition-colors">
+               (41) 98437-0981
+             </a>
+          </div>
+
+          <div className="flex justify-center md:justify-end gap-6">
+             <div className="flex flex-col items-center md:items-end">
+               <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Sede Operacional</span>
+               <span className="text-xs font-bold uppercase tracking-tight text-white mt-1">Curitiba / PR - Brasil</span>
+             </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating CTA Mobile */}
+      <div className="md:hidden fixed bottom-6 left-6 right-6 z-50">
+        <Button asChild className="w-full h-16 bg-accent text-black font-black uppercase tracking-widest rounded-none shadow-xl">
+           <a href="https://wa.me/5541984370981" target="_blank">Falar no WhatsApp</a>
+        </Button>
+      </div>
+    </main>
+  )
 }
