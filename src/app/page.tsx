@@ -1,9 +1,15 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Zap, Target, BarChart3, ShieldCheck, Globe, Cpu } from "lucide-react"
+import { ArrowRight, Zap, Target, ShieldCheck, Globe, Menu, X, MessageCircle } from "lucide-react"
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const partners = [
     {
       name: "Marcos",
@@ -33,14 +39,41 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Image src="/NOVOFLOWVERDE.png" alt="Novo Flow" width={180} height={45} className="object-contain" />
           </div>
-          <a 
-            href="https://form.respondi.app/lDg0Bifo" 
-            target="_blank" 
-            className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-[#2bffa0] transition-colors"
+          
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#fundadores" className="text-xs font-bold uppercase tracking-widest hover:text-[#2bffa0] transition-colors">Fundadores</a>
+            <Link href="/manifesto" className="text-xs font-bold uppercase tracking-widest hover:text-[#2bffa0] transition-colors">Manifesto</Link>
+            <a 
+              href="https://form.respondi.app/lDg0Bifo" 
+              target="_blank" 
+              className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-[#2bffa0] transition-colors"
+            >
+              Aplicar para Consultoria <ArrowRight size={14} />
+            </a>
+          </div>
+
+          <button 
+            className="md:hidden text-foreground hover:text-[#2bffa0] transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            Aplicar para Consultoria <ArrowRight size={14} />
-          </a>
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
+
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-background border-b border-white/10 px-6 py-6 flex flex-col gap-6 shadow-xl">
+            <a href="#fundadores" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest hover:text-[#2bffa0] transition-colors">Fundadores</a>
+            <Link href="/manifesto" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest hover:text-[#2bffa0] transition-colors">Manifesto</Link>
+            <a 
+              href="https://form.respondi.app/lDg0Bifo" 
+              target="_blank" 
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#2bffa0] transition-colors"
+            >
+              Aplicar para Consultoria <ArrowRight size={16} />
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -48,45 +81,29 @@ export default function Home() {
         <div className="absolute top-40 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-[#2bffa0]/20 blur-[120px] rounded-full -z-10 animate-pulse"></div>
         
         <div className="max-w-7xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-primary/30 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-[0.2em] animate-fade-in-down">
-            <Cpu size={12} />
-            The AI-Driven Performance Engine
-          </div>
-          
           <h1 className="text-5xl md:text-8xl lg:text-9xl font-black uppercase leading-[0.9] tracking-tighter animate-fade-in bg-gradient-to-r from-white via-green-200 to-[#2bffa0] bg-clip-text text-transparent pb-2">
             Instalar uma Máquina de <br />
             <span className="italic">Performance.</span>
           </h1>
           
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-medium animate-fade-in animate-delay-200">
-            Escalamos operações High-Ticket com inteligência de dados e processos de elite. 
+            Escalamos operações com inteligência de dados e processos de elite. 
             <span className="text-foreground block mt-2">1 Mês de Google Meu Negócio / Casa Arrumada + 3 Meses de Tração e Escala.</span>
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-8 animate-fade-in-up animate-delay-400">
+          <div className="flex justify-center pt-8 animate-fade-in-up animate-delay-400">
             <Button asChild className="h-16 px-10 bg-[#2bffa0] hover:bg-[#2bffa0]/90 text-black font-black uppercase tracking-widest text-lg rounded-none group transition-all duration-300 hover:scale-105">
               <a href="https://form.respondi.app/lDg0Bifo" target="_blank">
                 Ativar Minha Máquina
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <div className="flex items-center gap-4 text-left">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-background bg-primary/20 text-primary flex items-center justify-center text-[10px] font-bold">U{i}</div>
-                ))}
-              </div>
-              <div>
-                <p className="text-sm font-black uppercase tracking-tighter text-primary">+R$ 35 Milhões</p>
-                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Track Record Combinado</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Partners / Specialists */}
-      <section className="py-32 px-6 bg-zinc-950/50 relative overflow-hidden">
+      <section id="fundadores" className="py-32 px-6 bg-zinc-950/50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center md:text-left space-y-4">
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-white via-green-200 to-[#2bffa0] bg-clip-text text-transparent pb-2">
@@ -121,8 +138,8 @@ export default function Home() {
       </section>
 
       {/* Methodology Section */}
-      <section className="py-32 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <div className="space-y-8">
+      <section className="py-32 px-6 max-w-3xl mx-auto grid grid-cols-1 gap-20 items-center">
+        <div className="space-y-8 text-center">
           <h2 className="text-4xl md:text-6xl font-black uppercase leading-none tracking-tighter bg-gradient-to-r from-white via-green-200 to-[#2bffa0] bg-clip-text text-transparent pb-2">
             A Implantação que <span className="text-[#2bffa0]">Gera Tração.</span>
           </h2>
@@ -131,7 +148,7 @@ export default function Home() {
             Não é sobre ser visto, é sobre ser inescapável para o seu público ideal. O processo é focado em Posicionamento Local e Google Meu Negócio nos primeiros 30 dias.
           </p>
           
-          <div className="space-y-4">
+          <div className="space-y-4 text-left">
             <div className="flex gap-4 p-5 bg-zinc-900/50 border-l-2 border-[#2bffa0] hover:border-l-4 transition-all">
               <ShieldCheck className="text-[#2bffa0] shrink-0" />
               <div>
@@ -167,15 +184,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        <div className="relative aspect-square bg-zinc-900 border border-white/10 flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-          <div className="relative z-10 text-center space-y-4">
-             <div className="text-8xl font-black text-[#2bffa0]/20 italic select-none">DATA</div>
-             <BarChart3 size={80} className="mx-auto text-primary animate-bounce" />
-             <div className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Optimized in Real-Time</div>
-          </div>
-        </div>
       </section>
 
       {/* Final CTA */}
@@ -186,7 +194,7 @@ export default function Home() {
             Pare de jogar <br /> <span className="text-black italic">DINHEIRO</span> fora.
           </h2>
           <p className="text-black text-lg md:text-xl font-bold uppercase tracking-widest max-w-2xl mx-auto">
-            Se você fatura mais de R$ 50k/mês, o Novo Flow é o seu próximo degrau.
+            Se você fatura em média entre R$ 10k e R$ 50k/mês, o Novo Flow é o seu próximo degrau.
           </p>
           <Button asChild className="h-24 px-16 bg-black hover:bg-zinc-900 text-white font-black uppercase tracking-widest text-2xl rounded-none shadow-[20px_20px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none transition-all duration-300">
             <a href="https://form.respondi.app/lDg0Bifo" target="_blank">
@@ -198,38 +206,49 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-20 px-6 bg-black border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
-          <div className="space-y-4">
-            <div className="flex items-center justify-center md:justify-start gap-2">
-              <Image src="/NOVOFLOWVERDE.png" alt="Novo Flow" width={150} height={38} className="object-contain" />
-            </div>
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-12">
+          
+          <div className="space-y-4 flex flex-col items-center">
+            <Image src="/NOVOFLOWVERDE.png" alt="Novo Flow" width={150} height={38} className="object-contain" />
             <p className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-medium leading-loose">
               Copyright © 2026 Novo Flow Performance. <br />
               Todos os direitos reservados.
             </p>
           </div>
           
-          <div className="flex flex-col gap-2">
-             <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Estratégia & Contato</span>
-             <a href="https://wa.me/5541984370981" target="_blank" className="text-xl font-black hover:text-primary transition-colors">
-               (41) 98437-0981
-             </a>
-          </div>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+             <div className="flex flex-col gap-3 items-center">
+               <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Links</span>
+               <a href="#fundadores" className="text-sm font-bold uppercase tracking-widest hover:text-[#2bffa0] text-white transition-colors">Os Fundadores</a>
+               <Link href="/manifesto" className="text-sm font-bold uppercase tracking-widest hover:text-[#2bffa0] text-white transition-colors">Nosso Manifesto</Link>
+               <a href="https://www.instagram.com/novoflowdigital" target="_blank" className="text-sm font-bold uppercase tracking-widest hover:text-[#2bffa0] text-white transition-colors">Instagram</a>
+             </div>
 
-          <div className="flex justify-center md:justify-end gap-6">
-             <div className="flex flex-col items-center md:items-end">
+             <div className="flex flex-col gap-3 items-center">
+               <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Estratégia & Contato</span>
+               <a href="https://wa.me/5541984370981" target="_blank" className="text-xl font-black hover:text-[#2bffa0] text-white transition-colors">
+                 (41) 98437-0981
+               </a>
+             </div>
+
+             <div className="flex flex-col gap-3 items-center">
                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Sede Operacional</span>
-               <span className="text-xs font-bold uppercase tracking-tight text-white mt-1">Curitiba / PR - Brasil</span>
+               <span className="text-sm font-bold uppercase tracking-tight text-white">Curitiba / PR - Brasil</span>
              </div>
           </div>
+
         </div>
       </footer>
 
-      {/* Floating CTA Mobile */}
-      <div className="md:hidden fixed bottom-6 left-6 right-6 z-50">
-        <Button asChild className="w-full h-16 bg-primary text-black font-black uppercase tracking-widest rounded-none shadow-xl">
-           <a href="https://wa.me/5541984370981" target="_blank">Falar no WhatsApp</a>
-        </Button>
+      {/* Global Floating CTA */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a 
+          href="https://wa.me/5541984370981" 
+          target="_blank"
+          className="flex items-center justify-center w-14 h-14 bg-[#2bffa0] text-black rounded-full shadow-xl hover:scale-110 transition-transform duration-300"
+        >
+          <MessageCircle size={28} />
+        </a>
       </div>
     </main>
   )

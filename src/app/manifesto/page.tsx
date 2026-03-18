@@ -25,7 +25,7 @@ export default function ManifestoPage() {
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
             O Fim da Era das <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+            <span className="bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text">
               Agências de Vaidade.
             </span>
           </h1>
@@ -41,7 +41,7 @@ export default function ManifestoPage() {
           
           {/* A Dor */}
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <h2 className="text-3xl font-bold tracking-tight text-white/90">
+            <h2 className="bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text text-3xl font-bold tracking-tight">
               A Ilusão do Volume
             </h2>
             <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
@@ -56,7 +56,7 @@ export default function ManifestoPage() {
 
           {/* A Visão */}
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <h2 className="text-3xl font-bold tracking-tight text-white/90">
+            <h2 className="bg-gradient-to-r from-[#2bffa0] to-white text-transparent bg-clip-text text-3xl font-bold tracking-tight">
               Engenharia Precisa
             </h2>
             <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
@@ -71,7 +71,7 @@ export default function ManifestoPage() {
 
           {/* O Compromisso */}
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <h2 className="text-3xl font-bold tracking-tight text-white/90">
+            <h2 className="bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text text-3xl font-bold tracking-tight">
               O Compromisso Novo Flow
             </h2>
             <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
@@ -90,7 +90,7 @@ export default function ManifestoPage() {
       {/* Conclusion & CTA */}
       <section className="py-32 px-6 border-t border-white/10 bg-gradient-to-b from-black to-zinc-950">
         <div className="max-w-4xl mx-auto text-center space-y-12 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
+          <h2 className="bg-gradient-to-r from-[#2bffa0] to-white text-transparent bg-clip-text text-4xl md:text-5xl font-black tracking-tighter">
             O Seu Último Destino.
           </h2>
           <p className="text-xl md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed">
