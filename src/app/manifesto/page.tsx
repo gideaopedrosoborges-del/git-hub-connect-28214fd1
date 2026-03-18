@@ -1,11 +1,57 @@
+"use client"
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 
 export default function ManifestoPage() {
+  const [isIdle, setIsIdle] = useState(false);
+
+  useEffect(() => {
+    let showTimer: any;
+
+    const handleActivity = () => {
+      // Esconde IMEDIATAMENTE quando a pessoa rolar a página
+      setIsIdle(false);
+
+      // Mostra o botão após 0.5 segundos (500ms) com a página parada
+      clearTimeout(showTimer);
+      showTimer = setTimeout(() => {
+        setIsIdle(true);
+      }, 500);
+    };
+
+    // Usa touchmove no lugar de touchstart para não esconder quando a pessoa tentar clicar no botão pelo celular
+    window.addEventListener('scroll', handleActivity);
+    window.addEventListener('touchmove', handleActivity);
+
+    // Inicia o timer inicial
+    handleActivity();
+
+    return () => {
+      window.removeEventListener('scroll', handleActivity);
+      window.removeEventListener('touchmove', handleActivity);
+      clearTimeout(showTimer);
+    };
+  }, []);
+
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-primary selection:text-primary-foreground font-sans overflow-x-hidden">
+    <main className="min-h-screen bg-black text-white selection:bg-[#2bffa0] selection:text-black font-sans overflow-x-hidden relative">
+      {/* Fundo Cibernético Interativo */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+        <FlickeringGrid
+          className="w-full h-full"
+          squareSize={4}
+          gridGap={6}
+          color="#2bffa0"
+          maxOpacity={0.25}
+          flickerChance={0.15}
+        />
+      </div>
+
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6 h-20 flex items-center">
           <Link 
             href="/" 
@@ -20,17 +66,17 @@ export default function ManifestoPage() {
       {/* Hero Section */}
       <section className="pt-40 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase">
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-[#2bffa0]/30 bg-[#2bffa0]/10 text-[#2bffa0] text-xs font-bold tracking-widest uppercase">
             Nosso Manifesto
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
             O Fim da Era das <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text">
+            <span className="inline-block bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text">
               Agências de Vaidade.
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed">
-            Nós não vendemos tráfego. Construímos ativos de previsibilidade e lucro para negócios High-Ticket.
+            Nós não vendemos tráfego. Construímos ativos de previsibilidade e lucro para o seu negócio.
           </p>
         </div>
       </section>
@@ -41,7 +87,7 @@ export default function ManifestoPage() {
           
           {/* A Dor */}
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <h2 className="bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text text-3xl font-bold tracking-tight">
+            <h2 className="inline-block bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text text-3xl font-bold tracking-tight">
               A Ilusão do Volume
             </h2>
             <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
@@ -49,29 +95,29 @@ export default function ManifestoPage() {
                 O mercado digital foi corrompido por promessas vazias e métricas de vaidade. Agências tradicionais comemoram curtidas, impressões e um volume inflado de leads desqualificados, enquanto os boletos da sua operação continuam chegando.
               </p>
               <p>
-                Eles operam em modelos focados em volume sem margem. Entregam relatórios bonitos que não refletem no caixa da empresa. A verdade nua e crua é que <strong className="text-white font-medium">curtidas não pagam boletos</strong> e leads frios apenas sobrecarregam seu time comercial.
+                Eles operam em modelos focados em volume sem margem. Entregam relatórios bonitos que não refletem no caixa da empresa. A verdade nua e crua é que <strong className="bg-[#2bffa0] text-black px-1.5 py-0.5 font-bold rounded-sm">curtidas não pagam boletos</strong> e leads frios apenas sobrecarregam seu time comercial. Se você quer sair desse ciclo destrutivo, <a href="https://form.respondi.app/lDg0Bifo" target="_blank" className="bg-[#2bffa0] text-black px-1.5 py-0.5 font-bold rounded-sm hover:opacity-90 transition-opacity">aplique para um diagnóstico estratégico</a> agora mesmo.
               </p>
             </div>
           </div>
 
           {/* A Visão */}
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <h2 className="bg-gradient-to-r from-[#2bffa0] to-white text-transparent bg-clip-text text-3xl font-bold tracking-tight">
+            <h2 className="inline-block bg-gradient-to-r from-[#2bffa0] to-white text-transparent bg-clip-text text-3xl font-bold tracking-tight">
               Engenharia Precisa
             </h2>
             <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
               <p>
-                Vender produtos ou serviços <em className="text-white not-italic font-medium">High-Ticket</em> exige uma abordagem completamente diferente. Não se trata de pescar de rede, mas de usar um rifle de precisão. Exige engenharia, inteligência de dados e um entendimento profundo da jornada de compra de um cliente sofisticado.
+                Vender produtos ou serviços exige uma abordagem completamente diferente. Não se trata de pescar de rede, mas de usar um rifle de precisão. Exige engenharia, inteligência de dados e um entendimento profundo da jornada de compra do seu cliente ideal.
               </p>
               <p>
-                Nossa visão é clara: foco obsessivo em ROI verdadeiro, lucro líquido e previsibilidade de escala. Cada campanha, cada automação e cada linha de copy é projetada com um único objetivo: <strong className="text-white font-medium">gerar receita sustentável</strong>.
+                Nossa visão é clara: foco obsessivo em ROI verdadeiro, lucro líquido e previsibilidade de escala. Cada campanha, cada automação e cada linha de copy é projetada com um único objetivo: <strong className="bg-[#2bffa0] text-black px-1.5 py-0.5 font-bold rounded-sm">gerar receita sustentável</strong>. <a href="https://form.respondi.app/lDg0Bifo" target="_blank" className="bg-[#2bffa0] text-black px-1.5 py-0.5 font-bold rounded-sm hover:opacity-90 transition-opacity">Instale essa máquina de vendas</a> na sua empresa.
               </p>
             </div>
           </div>
 
           {/* O Compromisso */}
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <h2 className="bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text text-3xl font-bold tracking-tight">
+            <h2 className="inline-block bg-gradient-to-r from-white to-[#2bffa0] text-transparent bg-clip-text text-3xl font-bold tracking-tight">
               O Compromisso Novo Flow
             </h2>
             <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
@@ -79,7 +125,7 @@ export default function ManifestoPage() {
                 Nosso trabalho não termina quando o lead cai no CRM. Ele termina no faturamento. Nós assumimos a responsabilidade pela qualidade do ecossistema que construímos.
               </p>
               <p>
-                É por isso que estruturamos a nossa operação de forma clara, pragmática e focada em resultados reais: <strong>1 mês dedicado a arrumar a casa</strong> com implantação completa de Inteligência Local e Google Meu Negócio, seguido por <strong>3 meses de tração agressiva e tráfego focado em ROI absoluto</strong>. Não acreditamos em milagres; acreditamos em engenharia de vendas e otimização contínua.
+                É por isso que estruturamos a nossa operação de forma clara, pragmática e focada em resultados reais: <strong>1 mês dedicado a arrumar a casa</strong> com implantação completa de Inteligência Local e Google Meu Negócio, seguido por <strong>3 meses de tração agressiva e tráfego focado em ROI absoluto</strong>. Não acreditamos em milagres; acreditamos em engenharia de vendas e otimização contínua. <a href="https://form.respondi.app/lDg0Bifo" target="_blank" className="bg-[#2bffa0] text-black px-1.5 py-0.5 font-bold rounded-sm hover:opacity-90 transition-opacity">Inicie a transformação do seu ecossistema.</a>
               </p>
             </div>
           </div>
@@ -94,7 +140,7 @@ export default function ManifestoPage() {
             O Seu Último Destino.
           </h2>
           <p className="text-xl md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed">
-            Se você tem um negócio High-Ticket, possui capacidade de entrega e quer escala previsível, a <span className="text-white font-medium">Novo Flow</span> é a parceria definitiva que você estava procurando.
+            Se você possui um negócio com capacidade de entrega e quer escala previsível, a <span className="bg-[#2bffa0] text-black px-1.5 py-0.5 font-bold rounded-sm">Novo Flow</span> é a parceria definitiva que você estava procurando.
           </p>
           
           <div className="pt-8">
@@ -102,7 +148,7 @@ export default function ManifestoPage() {
               href="https://form.respondi.app/lDg0Bifo"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-none font-black tracking-widest transition-all transform hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(37,231,122,0.5)] group"
+              className="inline-flex items-center gap-3 px-8 py-5 bg-[#2bffa0] hover:bg-[#2bffa0]/90 text-black rounded-none font-black tracking-widest transition-all transform hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(43,255,160,0.5)] group"
             >
               INICIAR DIAGNÓSTICO ESTRATÉGICO
               <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -113,6 +159,25 @@ export default function ManifestoPage() {
           </div>
         </div>
       </section>
+
+      {/* Gatilho de Inatividade - Floating CTA */}
+      <div 
+        className={`fixed bottom-10 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-in-out ${
+          isIdle 
+            ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
+            : 'opacity-0 translate-y-10 scale-95 pointer-events-none'
+        }`}
+      >
+        <Link 
+          href="https://form.respondi.app/lDg0Bifo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 px-8 py-4 bg-[#2bffa0] text-black font-black uppercase tracking-widest text-sm shadow-[0_0_50px_rgba(43,255,160,0.3)] rounded-full hover:scale-105 transition-transform"
+        >
+          Iniciar Diagnóstico
+          <ChevronRight size={18} />
+        </Link>
+      </div>
 
       {/* Global Styles for Animations */}
       <style dangerouslySetInnerHTML={{__html: `
