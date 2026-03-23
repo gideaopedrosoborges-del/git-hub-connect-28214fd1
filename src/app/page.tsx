@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Zap, Target, ShieldCheck, Globe, Menu, X, MessageCircle } from "lucide-react"
+import { ArrowRight, Zap, Target, ShieldCheck, Globe, Menu, X } from "lucide-react"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -141,7 +141,7 @@ export default function Home() {
             A Implantação que <span className="text-[#2bffa0]">Gera Tração.</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Enquanto outros focam em "branding contemplativo", nós instalamos infraestrutura de venda. 
+            Enquanto outros focam em &quot;branding contemplativo&quot;, nós instalamos infraestrutura de venda. 
             Não é sobre ser visto, é sobre ser inescapável para o seu público ideal. O processo é focado em Posicionamento Local e Google Meu Negócio nos primeiros 30 dias.
           </p>
           
