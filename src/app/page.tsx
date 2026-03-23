@@ -91,7 +91,7 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center pt-8 animate-fade-in-up animate-delay-400">
-            <Button asChild className="h-16 px-10 bg-[#2bffa0] hover:bg-[#2bffa0]/90 text-black font-black uppercase tracking-widest text-lg rounded-none group transition-all duration-300 hover:scale-105">
+            <Button className="h-16 px-10 bg-[#2bffa0] hover:bg-[#2bffa0]/90 text-black font-black uppercase tracking-widest text-lg rounded-none group transition-all duration-300 hover:scale-105">
               <a href="https://form.respondi.app/lDg0Bifo" target="_blank" className="flex items-center gap-2">
                 Ativar Minha Máquina
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -193,7 +193,7 @@ export default function Home() {
           <p className="text-black text-lg md:text-xl font-bold uppercase tracking-widest max-w-2xl mx-auto">
             Se você fatura em média R$ 10k e R$ 50k/mês, o Novo Flow é o seu próximo degrau.
           </p>
-          <Button asChild className="h-24 px-16 bg-black hover:bg-zinc-900 text-white font-black uppercase tracking-widest text-2xl rounded-none shadow-[20px_20px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none transition-all duration-300">
+          <Button className="h-24 px-16 bg-black hover:bg-zinc-900 text-white font-black uppercase tracking-widest text-2xl rounded-none shadow-[20px_20px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none transition-all duration-300">
             <a href="https://form.respondi.app/lDg0Bifo" target="_blank" className="flex items-center gap-3">
               Ativar Minha Máquina
               <ArrowRight size={28} />
