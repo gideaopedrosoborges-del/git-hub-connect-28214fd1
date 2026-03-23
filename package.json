@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "build:dev": "next build",
-    "start": "next start",
+    "dev": "vite",
+    "build": "vite build",
+    "build:dev": "vite build",
+    "preview": "vite preview",
     "lint": "eslint"
   },
   "dependencies": {
