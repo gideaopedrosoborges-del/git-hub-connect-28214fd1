@@ -34,23 +34,25 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const memoizedColor = useMemo(() => {
-    const toRGBA = (color: string) => {
-      if (typeof window === "undefined") {
-        return `rgba(0, 0, 0,`;
-      }
-      const canvas = document.createElement("canvas");
-      canvas.width = canvas.height = 1;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return "rgba(255, 0, 0,";
-      ctx.fillStyle = color;
-      ctx.fillRect(0, 0, 1, 1);
-      const [r, g, b] = Array.from(ctx.getImageData(0, 0, 1, 1).data);
-      return `rgba(${r}, ${g}, ${b},`;
-    };
-    return toRGBA(color);
-  }, [color]);
+    if (!isMounted || typeof window === "undefined") {
+      return `rgba(0, 0, 0,`;
+    }
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 1;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return "rgba(255, 0, 0,";
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = Array.from(ctx.getImageData(0, 0, 1, 1).data);
+    return `rgba(${r}, ${g}, ${b},`;
+  }, [color, isMounted]);
 
   const setupCanvas = useCallback(
     (canvas: HTMLCanvasElement, width: number, height: number) => {
@@ -114,6 +116,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   );
 
   useEffect(() => {
+    if (!isMounted) return;
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
@@ -177,7 +180,11 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
     };
-  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
+  }, [isMounted, setupCanvas, updateSquares, drawGrid, width, height, isInView]);
+
+  if (!isMounted) {
+    return <div ref={containerRef} className={`w-full h-full ${className}`} />;
+  }
 
   return (
     <div ref={containerRef} className={`w-full h-full ${className}`}>
