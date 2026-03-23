@@ -10,14 +10,14 @@ export default function ManifestoPage() {
   const [isIdle, setIsIdle] = useState(false);
 
   useEffect(() => {
-    let showTimer: any;
+    let showTimer: ReturnType<typeof setTimeout> | undefined;
 
     const handleActivity = () => {
       // Esconde IMEDIATAMENTE quando a pessoa rolar a página
       setIsIdle(false);
 
       // Mostra o botão após 0.5 segundos (500ms) com a página parada
-      clearTimeout(showTimer);
+      if (showTimer) clearTimeout(showTimer);
       showTimer = setTimeout(() => {
         setIsIdle(true);
       }, 500);
@@ -33,7 +33,7 @@ export default function ManifestoPage() {
     return () => {
       window.removeEventListener('scroll', handleActivity);
       window.removeEventListener('touchmove', handleActivity);
-      clearTimeout(showTimer);
+      if (showTimer) clearTimeout(showTimer);
     };
   }, []);
 
